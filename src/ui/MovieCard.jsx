@@ -2,9 +2,13 @@ import { FaEdit, FaTrash } from "react-icons/fa";
 import { useEditRate } from "../api/useEditRate";
 import StarRating from "./StarRating";
 import { useState } from "react";
+import DeleteModal from "./DeleteModal";
+import { useDeleteMovie } from "../api/useDeleteMovie";
 
 function MovieCard({ movie }) {
+  const [isOpen, setIsOpen] = useState(false);
   const { editRate } = useEditRate();
+  const { deleteMovie, isDeleting } = useDeleteMovie();
   function handleRate(newRating) {
     editRate({ id: movie.id, newRating });
   }
@@ -46,9 +50,18 @@ function MovieCard({ movie }) {
             <button className="text-blue-500 bg-gray-100 flex justify-center items-center rounded-full w-8 h-8 hover:text-blue-700 cursor-pointer">
               <FaEdit />
             </button>
-            <button className="text-red-500 bg-gray-100 flex justify-center items-center rounded-full w-8 h-8 hover:text-red-700 cursor-pointer">
+            <button
+              onClick={() => setIsOpen(true)}
+              className="text-red-500 bg-gray-100 flex justify-center items-center rounded-full w-8 h-8 hover:text-red-700 cursor-pointer"
+            >
               <FaTrash />
             </button>
+            <DeleteModal
+              onClose={() => setIsOpen(false)}
+              isOpen={isOpen}
+              deleteMovie={() => deleteMovie(movie.id)}
+              isDeleting={isDeleting}
+            />
           </div>
         </div>
       </div>

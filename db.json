@@ -49,45 +49,6 @@
       "inTheaters": false
     },
     {
-      "id": "04b4",
-      "values": {
-        "name": "the lorddjn",
-        "description": "jfkjfnk",
-        "image": "https://image.tmdb.org/t/p/w500/edv5CZvWj09upOsy2Y6IwDhK8bt.jpg",
-        "genres": [
-          "Drama",
-          "Crime"
-        ],
-        "inTheaters": true
-      },
-      "rating": 3
-    },
-    {
-      "id": "f0ab",
-      "name": "lord",
-      "description": "fhjkl./",
-      "image": "https://image.tmdb.org/t/p/w500/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg",
-      "genres": [
-        "Crime",
-        "Action"
-      ],
-      "inTheaters": false,
-      "rating": 3
-    },
-    {
-      "id": "266c",
-      "name": "Lordddddddd",
-      "description": "kfjhnk",
-      "image": "https://image.tmdb.org/t/p/w500/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg",
-      "genres": [
-        "Drama",
-        "Crime",
-        "Comedy"
-      ],
-      "inTheaters": false,
-      "rating": 3
-    },
-    {
       "id": "8810",
       "name": "REEEEM",
       "description": "ghjkl",

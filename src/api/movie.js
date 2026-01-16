@@ -40,6 +40,19 @@ export async function createMovie(newMovie) {
   }
 }
 
+export async function deleteMovie(id) {
+  try {
+    const response = await axios.delete(`${API_URL}/${id}`);
+    return response.data;
+  } catch (error) {
+    if (error.response) {
+      console.error("❌ Status:", error.response.status);
+      console.error("❌ Error Data:", error.response.data);
+    }
+    return null;
+  }
+}
+
 //Rating
 export async function updateRating(id, newRating) {
   console.log("Sending PATCH:", { id, newRating });
