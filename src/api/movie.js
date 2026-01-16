@@ -1,12 +1,9 @@
 import axios from "axios";
 
-const KEY = "f84fc31d";
-
+const API_URL = "http://localhost:3001/items";
 export async function getMovies() {
   try {
-    const response = await axios.get(
-      `http://www.omdbapi.com/?apikey=${KEY}&s=batman`
-    );
+    const response = await axios.get(API_URL);
     return response.data;
   } catch (error) {
     if (error.response) {
