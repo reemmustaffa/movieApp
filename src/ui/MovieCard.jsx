@@ -17,7 +17,7 @@ function MovieCard({ movie }) {
           className="w-full h-full object-cover"
         />
         <div className="absolute top-2 right-2 bg-yellow-400 text-gray-500 text-sm font-bold px-2 py-1 rounded-full">
-          ⭐ {movie.rating}
+          ⭐ {movie.rating ? movie.rating : "-"}
         </div>
       </div>
 
@@ -38,10 +38,10 @@ function MovieCard({ movie }) {
         </p>
 
         <div className="flex justify-between items-center">
-          <p className="text-sm font-semibold mt-auto">
+          <div className="text-xs font-semibold mt-auto">
             Rating: ({movie.rating} / 5)
             <StarRating onRate={handleRate} currentRating={movie.rating} />
-          </p>
+          </div>
           <div className="flex gap-2">
             <button className="text-blue-500 bg-gray-100 flex justify-center items-center rounded-full w-8 h-8 hover:text-blue-700 cursor-pointer">
               <FaEdit />

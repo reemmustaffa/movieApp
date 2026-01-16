@@ -16,7 +16,7 @@ function StarRating({ currentRating, onRate }) {
           className="focus:outline-none"
         >
           <FaStar
-            className={`w-5 h-5 transition-colors ${
+            className={`w-4 h-4 transition-colors ${
               star <= (hover || currentRating)
                 ? "text-yellow-400"
                 : "text-gray-300"
