@@ -1,6 +1,13 @@
 import { FaEdit, FaTrash } from "react-icons/fa";
+import { useEditRate } from "../api/useEditRate";
+import StarRating from "./StarRating";
+import { useState } from "react";
 
 function MovieCard({ movie }) {
+  const { editRate } = useEditRate();
+  function handleRate(newRating) {
+    editRate({ id: movie.id, newRating });
+  }
   return (
     <div className="flex flex-col bg-white rounded-xl shadow-lg overflow-hidden h-full">
       <div className="relative w-full aspect-[2/3]">
@@ -17,7 +24,7 @@ function MovieCard({ movie }) {
       <div className="p-3 flex flex-col flex-grow">
         <h3 className="font-semibold text-md mb-1">{movie.name}</h3>
         <div className="flex gap-2 flex-wrap mb-2">
-          {movie.genres.map((genre) => (
+          {movie.genres?.map((genre) => (
             <span
               key={genre}
               className="bg-indigo-600 text-indigo-100 text-xs px-2 py-0.5 rounded-full"
@@ -33,6 +40,7 @@ function MovieCard({ movie }) {
         <div className="flex justify-between items-center">
           <p className="text-sm font-semibold mt-auto">
             Rating: ({movie.rating} / 5)
+            <StarRating onRate={handleRate} currentRating={movie.rating} />
           </p>
           <div className="flex gap-2">
             <button className="text-blue-500 bg-gray-100 flex justify-center items-center rounded-full w-8 h-8 hover:text-blue-700 cursor-pointer">
