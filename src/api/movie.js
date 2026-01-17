@@ -8,7 +8,7 @@ const API_URL = import.meta.env.PROD
 export async function getMovies() {
   try {
     const response = await axios.get(API_URL);
-    return response.data;
+    return response.data || [];
   } catch (error) {
     if (error.response) {
       console.error("❌ Status:", error.response.status);
