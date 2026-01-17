@@ -8,12 +8,12 @@ const API_URL = import.meta.env.PROD
 export async function getMovies() {
   try {
     const response = await axios.get(API_URL);
-    console.log("Movies fetched:", response.data);
-    return response.data || [];
+    const data = response.data;
+    return Array.isArray(data) ? data : [];
   } catch (error) {
     if (error.response) {
-      console.error("❌ Status:", error.response.status);
-      console.error("❌ Error Data:", error.response.data);
+      console.error("Status:", error.response.status);
+      console.error("Error Data:", error.response.data);
     }
     return [];
   }
