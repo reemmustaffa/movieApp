@@ -13,7 +13,7 @@ function StarRating({ currentRating, onRate }) {
           onClick={() => onRate(star)}
           onMouseEnter={() => setHover(star)}
           onMouseLeave={() => setHover(0)}
-          className="focus:outline-none"
+          className="focus:outline-none cursor-pointer"
         >
           <FaStar
             className={`w-4 h-4 transition-colors ${

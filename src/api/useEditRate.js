@@ -7,7 +7,6 @@ export function useEditRate() {
   const { mutate: editRate, isLoading: isRating } = useMutation({
     mutationFn: ({ id, newRating }) => updateRating(id, newRating),
     onSuccess: () => {
-      toast.success("Rating updated successfully!");
       queryClient.invalidateQueries(["movies"]);
     },
     onError: () => {

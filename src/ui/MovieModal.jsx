@@ -1,6 +1,7 @@
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { useCreateMovie } from "../api/useCreateMovie";
+import { useEditMovie } from "../api/useEditMovie";
 
 const MovieSchema = Yup.object({
   name: Yup.string().required("Required"),
@@ -13,6 +14,7 @@ const MovieSchema = Yup.object({
 });
 function MovieModal({ initialData = null, isUpdate, onClose, isOpen }) {
   const { createMovie, isCreating } = useCreateMovie();
+  const { updateMovie, isUpdating } = useEditMovie();
 
   const formik = useFormik({
     initialValues: {
@@ -25,6 +27,13 @@ function MovieModal({ initialData = null, isUpdate, onClose, isOpen }) {
     validationSchema: MovieSchema,
     enableReinitialize: true,
     onSubmit: (values) => {
+      if (initialData) {
+        updateMovie(
+          { id: initialData.id, updatedMovie: values },
+          { onSettled: () => onClose() }
+        );
+        return;
+      }
       createMovie(values, { onSettled: () => onClose() });
     },
   });
@@ -36,13 +45,13 @@ function MovieModal({ initialData = null, isUpdate, onClose, isOpen }) {
     >
       <form
         onClick={(e) => e.stopPropagation()}
-        className="bg-blue-200 rounded-lg shadow-xl flex flex-col max-w-lg w-full p-6 z-50"
+        className="bg-blue-200 rounded-lg shadow-xl flex flex-col gap-1.5 max-w-lg w-full p-6 z-50"
         onSubmit={formik.handleSubmit}
       >
         {/* Name */}
         <label className="block text-sm font-medium  text-gray-500">Name</label>
         <input
-          className="mt-1 text-gray-5 border-2 mb-2  border-blue-400 focus:outline-none p-1 rounded-lg focus:border-blue-400"
+          className="mt-1 text-gray-5 border-2 mb-4  border-blue-400 focus:outline-none p-1 rounded-lg focus:border-blue-400"
           name="name"
           value={formik.values.name}
           onChange={formik.handleChange}
@@ -59,7 +68,7 @@ function MovieModal({ initialData = null, isUpdate, onClose, isOpen }) {
         <textarea
           name="description"
           placeholder="Description"
-          className="mt-1 text-gray-5 border-2 resize-none mb-2  border-blue-400 focus:outline-none p-1 rounded-lg focus:border-blue-400"
+          className="mt-1 text-gray-5 border-2 resize-none mb-4  border-blue-400 focus:outline-none p-1 rounded-lg focus:border-blue-400"
           value={formik.values.description}
           onChange={formik.handleChange}
         />
@@ -78,7 +87,7 @@ function MovieModal({ initialData = null, isUpdate, onClose, isOpen }) {
           Image
         </label>
         <input
-          className="mt-1 text-gray-5 border-2 mb-2  border-blue-400 focus:outline-none p-1 rounded-lg focus:border-blue-400"
+          className="mt-1 text-gray-5 border-2 mb-4  border-blue-400 focus:outline-none p-1 rounded-lg focus:border-blue-400"
           name="image"
           placeholder="Image URL"
           value={formik.values.image}
@@ -94,7 +103,7 @@ function MovieModal({ initialData = null, isUpdate, onClose, isOpen }) {
           Genres
         </label>
         <select
-          className="mt-1 text-gray-5 border-2 mb-2  border-blue-400 focus:outline-none p-1 rounded-lg focus:border-blue-400"
+          className="mt-1 text-gray-5 border-2 mb-4  border-blue-400 focus:outline-none p-1 rounded-lg focus:border-blue-400"
           name="genres"
           multiple
           value={formik.values.genres}
@@ -134,9 +143,15 @@ function MovieModal({ initialData = null, isUpdate, onClose, isOpen }) {
           <button
             className="bg-blue-800 text-white p-1.5 text-sm rounded-md cursor-pointer "
             type="submit"
-            disabled={isCreating}
+            disabled={isCreating || isUpdating}
           >
-            {isUpdate ? "Update" : isCreating ? "Creating..." : "Create"}
+            {initialData
+              ? isUpdating
+                ? "Updating..."
+                : "Update "
+              : isCreating
+              ? "Creating..."
+              : "Create"}
           </button>
         </div>
       </form>

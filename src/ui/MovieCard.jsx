@@ -4,9 +4,11 @@ import StarRating from "./StarRating";
 import { useState } from "react";
 import DeleteModal from "./DeleteModal";
 import { useDeleteMovie } from "../api/useDeleteMovie";
+import MovieModal from "./MovieModal";
 
 function MovieCard({ movie }) {
   const [isOpen, setIsOpen] = useState(false);
+  const [isOpenModal, setIsOpenModal] = useState(false);
   const { editRate } = useEditRate();
   const { deleteMovie, isDeleting } = useDeleteMovie();
   function handleRate(newRating) {
@@ -47,7 +49,10 @@ function MovieCard({ movie }) {
             <StarRating onRate={handleRate} currentRating={movie.rating} />
           </div>
           <div className="flex gap-2">
-            <button className="text-blue-500 bg-gray-100 flex justify-center items-center rounded-full w-8 h-8 hover:text-blue-700 cursor-pointer">
+            <button
+              onClick={() => setIsOpenModal(true)}
+              className="text-blue-500 bg-gray-100 flex justify-center items-center rounded-full w-8 h-8 hover:text-blue-700 cursor-pointer"
+            >
               <FaEdit />
             </button>
             <button
@@ -61,6 +66,11 @@ function MovieCard({ movie }) {
               isOpen={isOpen}
               deleteMovie={() => deleteMovie(movie.id)}
               isDeleting={isDeleting}
+            />
+            <MovieModal
+              isOpen={isOpenModal}
+              onClose={() => setIsOpenModal(false)}
+              initialData={movie}
             />
           </div>
         </div>

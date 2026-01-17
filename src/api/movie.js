@@ -1,6 +1,8 @@
 import axios from "axios";
 
 const API_URL = "http://localhost:3002/items";
+
+//READ
 export async function getMovies() {
   try {
     const response = await axios.get(API_URL);
@@ -27,6 +29,7 @@ export async function getMovieById(id) {
   }
 }
 
+//CREATE
 export async function createMovie(newMovie) {
   try {
     const response = await axios.post(API_URL, newMovie);
@@ -40,6 +43,21 @@ export async function createMovie(newMovie) {
   }
 }
 
+//UPDATE
+export async function updateMovie({ id, updatedMovie }) {
+  try {
+    const response = await axios.put(`${API_URL}/${id}`, updatedMovie);
+    return response.data;
+  } catch (error) {
+    if (error.response) {
+      console.error("❌ Status:", error.response.status);
+      console.error("❌ Error Data:", error.response.data);
+    }
+    return null;
+  }
+}
+
+//DELETE
 export async function deleteMovie(id) {
   try {
     const response = await axios.delete(`${API_URL}/${id}`);
@@ -55,7 +73,6 @@ export async function deleteMovie(id) {
 
 //Rating
 export async function updateRating(id, newRating) {
-  console.log("Sending PATCH:", { id, newRating });
   try {
     const response = await axios.patch(`${API_URL}/${id}`, {
       rating: newRating,
