@@ -3,7 +3,7 @@ import { useEditRate } from "../api/useEditRate";
 
 function MovieHeader({ movies, onAddMovie }) {
   const { editRate } = useEditRate();
-  const ratedMovies = movies.filter(
+  const ratedMovies = movies?.filter(
     (movie) => typeof movie.rating === "number"
   );
   let averageRating =
@@ -15,7 +15,7 @@ function MovieHeader({ movies, onAddMovie }) {
   function removeRatings() {
     movies.map((movie) => {
       editRate(
-        { id: movie.id, newRating: null },
+        { id: movie?.id, newRating: null },
         { onSuccess: () => toast.success("Ratings removed successfully") }
       );
     });
