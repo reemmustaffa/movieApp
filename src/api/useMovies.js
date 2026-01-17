@@ -6,5 +6,5 @@ export function useMovies() {
     queryKey: ["movies"],
     queryFn: getMovies,
   });
-  return { movies, isLoading };
+  return { movies: movies || [], isLoading };
 }
