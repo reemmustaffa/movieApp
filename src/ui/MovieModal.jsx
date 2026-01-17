@@ -23,6 +23,7 @@ function MovieModal({ initialData = null, isUpdate, onClose, isOpen }) {
       image: initialData?.image || "",
       genres: initialData?.genres || [],
       inTheaters: initialData?.inTheaters || false,
+      rating: initialData?.rating || null,
     },
     validationSchema: MovieSchema,
     enableReinitialize: true,

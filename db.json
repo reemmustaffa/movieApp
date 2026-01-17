@@ -28,7 +28,7 @@
       "name": "Inception",
       "description": "A thief who steals corporate secrets through dream-sharing technology is given the inverse task of planting an idea.",
       "image": "https://image.tmdb.org/t/p/w500/edv5CZvWj09upOsy2Y6IwDhK8bt.jpg",
-      "rating": 1,
+      "rating": 5,
       "genres": [
         "Action",
         "Sci-Fi"
@@ -40,7 +40,7 @@
       "name": "Interstellar",
       "description": "A team of explorers travel through a wormhole in space in an attempt to ensure humanity's survival.",
       "image": "https://image.tmdb.org/t/p/w500/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg",
-      "rating": null,
+      "rating": 4,
       "genres": [
         "Adventure",
         "Drama",
@@ -49,9 +49,8 @@
       "inTheaters": false
     },
     {
-      "id": "8810",
       "name": "REEEEM",
-      "description": "ghjkl",
+      "description": "ghjklddxxx",
       "image": "https://image.tmdb.org/t/p/w500/edv5CZvWj09upOsy2Y6IwDhK8bt.jpg",
       "genres": [
         "Drama",
@@ -59,19 +58,8 @@
         "Action"
       ],
       "inTheaters": false,
-      "rating": null
-    },
-    {
-      "name": "farida",
-      "description": "ddddddddddddddddddddddddddd",
-      "image": "https://image.tmdb.org/t/p/w500/edv5CZvWj09upOsy2Y6IwDhK8bt.jpg",
-      "genres": [
-        "Drama",
-        "Action"
-      ],
-      "inTheaters": false,
-      "id": "74ac",
-      "rating": null
+      "rating": null,
+      "id": "8810"
     }
   ]
 }
