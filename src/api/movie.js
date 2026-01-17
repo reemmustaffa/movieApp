@@ -1,6 +1,8 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:3002/items";
+const API_URL = import.meta.env.PROD
+  ? "/api/items"
+  : "http://localhost:3002/items";
 
 //READ
 export async function getMovies() {

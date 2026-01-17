@@ -8,7 +8,8 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "server": "json-server --watch db.json --port 3002--delay 500"
+    "server": "json-server --watch db.json --port 3002--delay 500",
+    "start": "vite preview"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.18",
