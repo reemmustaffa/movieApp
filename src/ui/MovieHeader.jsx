@@ -15,7 +15,7 @@ function MovieHeader({ movies, onAddMovie }) {
   function removeRatings() {
     movies.map((movie) => {
       editRate(
-        { id: movie?.id, newRating: null },
+        { id: movie.id, newRating: null },
         { onSuccess: () => toast.success("Ratings removed successfully") }
       );
     });
